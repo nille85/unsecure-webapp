@@ -72,6 +72,21 @@ nav .brand {
     text-transform: uppercase;
 }
 
+nav .menu {
+    display: flex;
+    flex-direction: row;
+    list-style-type: none;
+    margin-right: 50;
+    padding: 0;
+}
+
+nav .menu>li {
+    margin: 0 1rem;
+    overflow: hidden;
+    font-size: 1em;
+    text-transform: uppercase;
+}
+
 /*
 Login
 */

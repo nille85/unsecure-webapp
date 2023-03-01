@@ -19,20 +19,29 @@
             <div class="container">
                 <div class="nav-bar">
                     <div class="brand">Simple And Unsecure</div>
+                    <ul class="menu">
+                        <li>
+                            <form action="/logout" method="post">
+                                <input type="submit" name="logout" value="Logout">
+                            </form>
+                        </li>
+                    </ul>
                 </div>
+
             </div>
         </nav>
 
         <section class="content">
             <div class="container">
-                
-               <h2>Congratulations, you have access!!!</h2>
+
+                <h1>Welcome {{username}}</h1>
+                Congratulations, you have access!!!
             </div>
 
         </section>
 
 
-        
+
     </body>
 
-</html>
+    </html>
