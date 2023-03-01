@@ -49,7 +49,9 @@ class WebServer {
         })
 
         //static folders
-        app.use('/static', express.static(path.join(__dirname, '../../public')))
+        const resolvedPath =  path.join(__dirname, '../../../public')
+        console.log(`resolved path: ${resolvedPath}`)
+        app.use('/static', express.static(resolvedPath))
         app.listen(3000)
 
     }
