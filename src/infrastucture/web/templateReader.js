@@ -14,7 +14,7 @@ class TemplateReader{
 
     readTemplate(fileName){
         console.log(__dirname)
-        const templateDirPath = this.path.join(__dirname, '..','templates')
+        const templateDirPath = this.path.join(__dirname, '.', 'templates')
         try {
             const filePath = `${templateDirPath}/${fileName}`
             const html = fs.readFileSync(filePath, 'utf-8')

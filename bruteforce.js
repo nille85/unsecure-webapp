@@ -31,7 +31,7 @@ async function checkPasswordValidaty(password){
         headers: { 'content-type': 'application/x-www-form-urlencoded' }
       }
     const response = await axios.post(
-        "http://localhost:3000/home", qs.stringify(data),
+        "http://localhost:3000", qs.stringify(data),
         options)
     
     

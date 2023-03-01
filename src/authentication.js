@@ -1,3 +1,5 @@
+const {UserAccountNotFound} = require("./infrastucture/database/userAccounts")
+
 class AuthenticationError extends Error{
     constructor(message) {
         super(message);
@@ -7,9 +9,19 @@ class AuthenticationError extends Error{
 
 class UserAuthenticator{
 
+    constructor(userAccountRepository){
+        this.userAccountRepository = userAccountRepository
+    }
+
     authenticate = (username, password) => {
-        if(!(username === "devteam" && password === "mahal")){
-            throw new AuthenticationError("Invalid credentials")
+        try{
+            const userAccount = this.userAccountRepository.findByUsernameAndPassword(username, password)
+            return userAccount
+        }catch(error){
+            if(error instanceof UserAccountNotFound){
+                throw new AuthenticationError("Invalid credentials")
+            }
+            throw new Error("unexpected error")
         }
     }
     
