@@ -8,7 +8,7 @@ class AuthenticationError extends Error{
 class UserAuthenticator{
 
     authenticate = (username, password) => {
-        if(!(username === "devteam" && password === "verysecretpassword")){
+        if(!(username === "devteam" && password === "mahal")){
             throw new AuthenticationError("Invalid credentials")
         }
     }

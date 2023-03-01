@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+
+<body>
+
+
+    <form action="/home" method="post">
+        
+        <label for="username">Username:</label><br>
+        <input type="text" name="username" value=""><br>
+        <label for="password">Password:</label><br>
+        <input type="password" name="password"><br><br>
+        <input type="submit" name="login" value="Login">
+        <div>
+            {{validation}}
+        </div>
+    </form>
+
+
+</body>
+
+</html>

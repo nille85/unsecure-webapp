@@ -2,6 +2,7 @@ const express = require('express')
 const app = express()
 const path = require('path')
 const { AuthenticationError } = require('./authentication')
+const TemplateRenderer = require("./templateRenderer")
 
 
 class WebServer {
@@ -21,16 +22,32 @@ class WebServer {
         app.use(express.urlencoded({ extended: false }))
         //routes
 
-        app.post('/login', function (req, res) {
+        app.get('/home', function(req, res){
+            const templateRenderer = TemplateRenderer.createFromFile("index.html")
+            const html =  templateRenderer.renderWithoutData()
+            res.send(html)
+
+        })
+
+        app.post('/home', function (req, res) {
             try {
                 const { username, password } = req.body
+                console.log("username:" + username)
+                console.log("password:" + password)
                 userAuthenticator.authenticate(username, password)
-                res.send()
+                
+                const html = TemplateRenderer.createFromFile("home.html").renderWithoutData()
+                res.send(html)
             } catch (err) {
                 if(err instanceof AuthenticationError){
-                    res.status(401).send()
+                    const data = {validation : "Login Failed"}
+                    const html = TemplateRenderer.createFromFile("index.html").renderWithData(data)
+                    res.status(200).send(html)
+                }else{
+                    const html = TemplateRenderer.createFromFile("error.html").renderWithoutData()
+                    res.status(200).send(html)
                 }
-                res.status(500).send("Internal Server Error")
+                
             }
         })
 
