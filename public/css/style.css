@@ -1,0 +1,82 @@
+:root {
+    --blue-color: rgb(81 180 233);
+    --light-blue-color: rgb(81 180 233 / 20%);
+    --black-color: #1a1a1a;
+    --dark-grey-color: #808080;
+    --light-grey-color: #f8f9fa;
+    --white-color: #ffffff;
+    --shadow-color: rgb(0 0 0 / 10%);
+}
+
+
+body {
+    font-family: "Verdana";
+    color: var(--black-color);
+    background-color: var(--light-grey-color);
+    margin: 0;
+}
+
+/*
+HTML Forms
+*/
+input[type=submit] {
+    background-color: var(--blue-color);
+    border: none;
+    color: var(--white-color);
+    padding: 16px 32px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+  }
+
+  input[type=text], input[type=password] {
+    border: 2px solid var(--blue-color);
+    border-radius: 4px;
+    padding: 12px 20px;
+    margin: 8px 0;
+  }
+
+
+.container {
+    width: 100%;
+    padding: 15px;
+    margin-right: auto;
+    margin-left: auto;
+    text-align: center;
+
+}
+
+/* navigation */
+
+nav {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1;
+    background-color: var(--white-color);
+    box-shadow: 0 1px 7px var(--shadow-color);
+}
+
+
+nav .nav-bar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+nav .brand {
+    font-family: 'Verdana';
+    font-size: 3em;
+    text-transform: uppercase;
+}
+
+/*
+Login
+*/
+
+section.login, section.content {
+    margin-top: 100px;
+    background-color: var(--light-blue-color);
+}

@@ -1,22 +1,50 @@
 <!doctype html>
 <html lang="en">
 
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="A Simple and Unsecure Webapp">
+
+    <title>A Simple and Unsecure Webapp </title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100&display=swap" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="static/css/style.css" rel="stylesheet">
+</head>
+
 <body>
 
 
-    <form action="/" method="post">
+    <body>
+
+        <nav>
+            <div class="container">
+                <div class="nav-bar">
+                    <div class="brand">Simple And Unsecure</div>
+                </div>
+            </div>
+        </nav>
+
+        <section class="login">
+            <div class="container">
+                <form action="/" method="post">
+
+                    <label for="username">Username</label><br>
+                    <input type="text" name="username" value=""><br>
+                    <label for="password">Password</label><br>
+                    <input type="password" name="password"><br><br>
+                    <input type="submit" name="login" value="Login">
+                    <div>
+                        {{validation}}
+                    </div>
+                </form>
+            </div>
+
+        </section>
+
+
         
-        <label for="username">Username:</label><br>
-        <input type="text" name="username" value=""><br>
-        <label for="password">Password:</label><br>
-        <input type="password" name="password"><br><br>
-        <input type="submit" name="login" value="Login">
-        <div>
-            {{validation}}
-        </div>
-    </form>
-
-
-</body>
+    </body>
 
 </html>
