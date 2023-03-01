@@ -1,0 +1,4 @@
+databases:
+  users:
+    dbusername: administrator
+    dbpassword: mypassword
