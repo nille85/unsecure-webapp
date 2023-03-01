@@ -1,7 +1,7 @@
 const express = require('express')
 const app = express()
 const path = require('path')
-const { AuthenticationError } = require('./authentication')
+const { AuthenticationError } = require('../../authentication')
 const TemplateRenderer = require("./templateRenderer")
 
 
@@ -22,20 +22,17 @@ class WebServer {
         app.use(express.urlencoded({ extended: false }))
         //routes
 
-        app.get('/home', function(req, res){
+        app.get('/', function(req, res){
             const templateRenderer = TemplateRenderer.createFromFile("index.html")
             const html =  templateRenderer.renderWithoutData()
             res.send(html)
 
         })
 
-        app.post('/home', function (req, res) {
+        app.post('/', function (req, res) {
             try {
                 const { username, password } = req.body
-                console.log("username:" + username)
-                console.log("password:" + password)
                 userAuthenticator.authenticate(username, password)
-                
                 const html = TemplateRenderer.createFromFile("home.html").renderWithoutData()
                 res.send(html)
             } catch (err) {
@@ -59,5 +56,3 @@ class WebServer {
 }
 
 module.exports = WebServer
-
-

@@ -4,8 +4,7 @@
   "description": "An unsecure webapp to showcase cybersecurity shortcomings",
   "main": "src/app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "pentest": "hydra -l devteam -P rockyou.txt 0.0.0.0 -s 3000 http-post-form '/:username=^USER^&password=^PASS^:F=Invalid'"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
