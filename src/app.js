@@ -4,7 +4,8 @@ const {UserAccountRepository} = require('./infrastucture/database/userAccounts')
 
 
 const userAccounts = [
-    {username: "devteam", password: "mahal"}
+    {username: "devteam", password: "mahal"},
+    {username: "niels", password:"linkinpark"}
 ]
 const userAccountRepository = new UserAccountRepository(
     userAccounts
