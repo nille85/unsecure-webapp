@@ -19,7 +19,7 @@ or
 nodemon
 ```
  
-## Bruteforce UserAccounts
+## Bruteforce of User Accounts
 A script is added in the root directory `bruteforce.js`
 It reads a file `rockyou-20.txt`(also in the root directory) which contains common passwords.
 
